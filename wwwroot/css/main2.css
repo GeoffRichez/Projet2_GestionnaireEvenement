@@ -1,0 +1,149 @@
+﻿/*[ Table ]*/
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('./Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('./Montserrat-Medium.ttf');
+}
+
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:100px;
+    margin-top:100px;
+    padding-top: 5px;
+    border: 2px solid rgb(84,155,88);
+    border-radius: 5px;
+}
+
+.wrap-table100 {
+    width: 1300px;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+table {
+    width: 100%;
+    background-color: #fff;
+}
+
+th, td {
+    font-weight: unset;
+    padding-right: 10px;
+}
+
+.column100 {
+    width: 130px;
+    padding-left: 25px;
+}
+
+    .column100.column1 {
+        width: 265px;
+        padding-left: 42px;
+    }
+
+.row100.head th {
+    padding-top: 24px;
+    padding-bottom: 20px;
+}
+
+.row100 td {
+    padding-top: 18px;
+    padding-bottom: 14px;
+}
+/*==================================================================
+[ Ver2 ]*/
+.table100.ver2 td {
+    font-family: Montserrat-Regular;
+    font-size: 14px;
+    color: #808080;
+    line-height: 1.4;
+}
+
+.table100.ver2 th {
+    font-family: Montserrat-Medium;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.4;
+    background-color: #333333;
+}
+
+.table100.ver2 .row100:hover td {
+    background-color: rgb(84,155,88);
+    color: #fff;
+}
+
+.table100.ver2 .hov-column-ver2 {
+    background-color: rgb(84,155,88);
+    color: #fff;
+}
+
+.table100.ver2 .hov-column-head-ver2 {
+    background-color: #484848 !important;
+}
+
+.table100.ver2 .row100 td:hover {
+    background-color: #57b846;
+    color: #fff;
+}
+
+/*==================================================================
+[ Ver2 ]*/
+.table100.ver2 tbody tr:nth-child(even) {
+    background-color: rgb(196,220,197)
+}
+
+.table100.ver2 td {
+    font-family: Montserrat-Regular;
+    font-size: 14px;
+    color: #808080;
+    line-height: 1.4;
+}
+
+.table100.ver2 th {
+    font-family: Montserrat-Medium;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.4;
+    text-transform: uppercase;
+    background-color: #333333;
+}
+
+.table100.ver2 .row100:hover td {
+    background-color: rgb(84,155,88);
+    color: #fff;
+}
+
+.table100.ver2 .hov-column-ver2 {
+    background-color: rgb(84,155,88);
+    color: #fff;
+}
+
+.table100.ver2 .hov-column-head-ver2 {
+    background-color: #484848 !important;
+}
+
+.table100.ver2 .row100 td:hover {
+    background-color: rgb(84,155,88;
+    color: #fff;
+}

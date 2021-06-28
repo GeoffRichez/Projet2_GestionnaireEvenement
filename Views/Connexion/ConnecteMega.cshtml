@@ -1,0 +1,131 @@
+@model WebApplication1.ViewModels.UtilisateurViewModel
+@using WebApplication1.Models
+@using Geoffroy.Models
+@{ Layout = "~/Views/Shared/_LayoutConnectMega.cshtml";
+    ViewBag.title = "ConnecteMega"; }
+
+<meta charset="UTF-8">
+
+
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">*@
+<link href="~/css/animate.css" rel="stylesheet" />
+<link href="~/css/select2.min.css" rel="stylesheet" />
+<link href="~/css/perfect-scrollbar.css" rel="stylesheet" />
+<link href="~/css/util.css" rel="stylesheet" />
+<link href="~/css/main2.css" rel="stylesheet" />
+
+@*Bienvenue dans la page administrateur*@
+
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="jumbotron text-center">
+                <h3 style="margin-bottom: 5%;">Devis en cours</h3>
+            </div>
+            <div class="table100 ver2 m-b-10">
+                <table data-vertable="ver2" style="border-radius: 5px">
+                    <thead>
+                        <tr class="row100 head">
+                            <th class="column100 column1" data-column="column1">Evénement</th>
+                            <th class="column100 column2" data-column="column2">N° Devis</th>
+                            <th class="column100 column3" data-column="column3">Client</th>
+                            <th class="column100 column4" data-column="column4">Contact Client</th>
+                            <th class="column100 column5" data-column="column5">Date événement </th>
+                            <th class="column100 column6" data-column="column6">Durée</th>
+                            <th class="column100 column7" data-column="column7">Ville</th>
+                            <th class="column100 column8" data-column="column8">Prestations souhaitées</th>
+                            <th class="column100 column9" data-column="column9">Coûts estimés</th>
+                            <th class="column100 column10" data-column="column10">Etat du devis</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.dvm.MainDevis)
+                        {
+
+
+                        <tr class="row100">
+                            <td class="column100 column1" data-column="column1">@item.EventDevis.ThemeEvent</td>
+                            <td class="column100 column2" data-column="column2">@string.Concat("D478", item.Id)</td>
+                            <td class="column100 column3" data-column="column3">@item.EntrepriseDevis.NomEntreprise</td>
+                            <td class="column100 column4" data-column="column4">@string.Concat(item.EntrepriseDevis.UtilisateurEntreprise.PrenomUtilisateur, " ", item.EntrepriseDevis.UtilisateurEntreprise.NomUtilisateur)</td>
+                            <td class="column100 column5" data-column="column5">@item.EventDevis.DateEvent.ToShortDateString()</td>
+                            <td class="column100 column6" data-column="column6">@string.Concat(item.EventDevis.DureeEvent, " jours")</td>
+                            <td class="column100 column7" data-column="column7">@item.EventDevis.LieuEvent.VilleLieu</td>
+
+                            @{ Dal dal = new Dal();
+                                List<Prestation> prestations = dal.ObtientTousLesEventsPrestations(item.EventDevis.Id);
+                                List<string> prestationsString = prestations.Select(p => p.NomPrestation).ToList();
+                                string prestas = string.Join(", ", prestationsString); }
+
+                            <td class="column100 column8" data-column="column8">@prestas</td>
+                            <td class="column100 column9" data-column="column9">@string.Concat(item.CoutEstime, " €")</td>
+                            <td class="column100 column9" data-column="column9">@item.AvancementDevis</td>
+
+
+                        </tr>
+                            }
+                        
+                            </tbody>
+                </table>
+            </div>
+        </div>
+    </div><div class="container-table100">
+    <div class="wrap-table100">
+        <div class="jumbotron text-center">
+            <h3 style="margin-bottom: 5%;">Demandes de devis</h3>
+        </div>
+        <div class="table100 ver2 m-b-10">
+            <table data-vertable="ver2" style="border-radius: 5px">
+                <thead>
+                    <tr class="row100 head">
+                        <th class="column100 column1" data-column="column1">Evénement</th>
+                        <th class="column100 column2" data-column="column2">N° Devis</th>
+                        <th class="column100 column3" data-column="column3">Client</th>
+                        <th class="column100 column4" data-column="column4">Contact Client</th>
+                        <th class="column100 column5" data-column="column5">Date événement </th>
+                        <th class="column100 column6" data-column="column6">Durée</th>
+                        <th class="column100 column7" data-column="column7">Ville</th>
+                        <th class="column100 column8" data-column="column8">Prestations souhaitées</th>
+                        <th class="column100 column9" data-column="column9">Coûts estimés</th>
+                        <th class="column100 column10" data-column="column10">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.dvm.MainDevis)
+                    {
+
+                        if (item.AvancementDevis == WebApplication1.Models.StatutDevis.Demande)
+                        {
+        <tr class="row100">
+            <td class="column100 column1" data-column="column1">@item.EventDevis.ThemeEvent</td>
+            <td class="column100 column2" data-column="column2">@string.Concat("D478", item.Id)</td>
+            <td class="column100 column3" data-column="column3">@item.EntrepriseDevis.NomEntreprise</td>
+            <td class="column100 column4" data-column="column4">@string.Concat(item.EntrepriseDevis.UtilisateurEntreprise.PrenomUtilisateur, " ", item.EntrepriseDevis.UtilisateurEntreprise.NomUtilisateur)</td>
+            <td class="column100 column5" data-column="column5">@item.EventDevis.DateEvent.ToShortDateString()</td>
+            <td class="column100 column6" data-column="column6">@string.Concat(item.EventDevis.DureeEvent, " jours")</td>
+            <td class="column100 column7" data-column="column7">@item.EventDevis.LieuEvent.VilleLieu</td>
+
+            @{ Dal dal = new Dal();
+                List<Prestation> prestations = dal.ObtientTousLesEventsPrestations(item.EventDevis.Id);
+                List<string> prestationsString = prestations.Select(p => p.NomPrestation).ToList();
+                string prestas = string.Join(", ", prestationsString); }
+
+            <td class="column100 column8" data-column="column8">@prestas</td>
+            <td class="column100 column9" data-column="column9">@string.Concat(item.CoutEstime, " €")</td>
+            <td class="column100 column10" data-column="column10">@Html.ActionLink("Valider", "ChangementDeStatut", "Connexion", new { id = item.Id })</td>
+
+
+        </tr>}
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="~/lib/jquery-3.2.1.min.js"></script>
+<script src="~/js/popper.js"></script>
+<script src="~/js/select2.min.js"></script>
+<script src="~/js/main2.js"></script>

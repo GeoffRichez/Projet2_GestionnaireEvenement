@@ -1,0 +1,67 @@
+﻿@model WebApplication1.ViewModels.RecapDevisViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.Title = "Recapitulatif devis";
+}
+
+<div id="partie centrale">
+    <div class="text-left">
+        <div class="container">
+            <div class="col-10">
+                <h3 class="section-title">Récapitulatif du devis @string.Concat("N° D478", Model.DevisId)</h3><br />
+            </div>     
+           
+            <div class="list-arrow-right">
+                <b> CLIENT REFERENT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.PrenomUtilisateur @Model.NomUtilisateur
+                <br />
+                <br />
+
+                <b> ENTREPRISE</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.NomEntreprise
+
+                <br />
+                <br />
+                <b> DATE PREVUE DE L'EVENEMENT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.DateEvent.ToShortDateString()
+                <br />
+                <br />
+
+                <b> TYPE D'EVENEMENT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.TypeEvent
+                <br />
+                <br />
+
+                <b> SUJET DE L'EVENEMENT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.ThemeEvent
+                <br />
+                <br />
+
+                <b> FORMAT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.FormatEvent
+                <br />
+                <br />
+
+                <b> DESCRIPTION</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.DescriptionEvent
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+</div>

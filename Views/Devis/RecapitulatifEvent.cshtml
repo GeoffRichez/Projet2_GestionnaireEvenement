@@ -1,0 +1,62 @@
+﻿@model WebApplication1.ViewModels.RecapDevisViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.Title = "Recapitulatif devis";
+}
+
+
+<div id="partie centrale">
+    <div class="text-left">
+        <div class="container">
+            <div class="col-10">
+                <h3 class="section-title">Récapitulatif de l'événement</h3><br />
+            </div>
+
+
+            <div class="list-arrow-right">
+                <b> TYPE D'EVENEMENT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.TypeEvent
+                <br />
+                <br />
+
+                <b> SUJET DE L'EVENEMENT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.ThemeEvent
+                <br />
+                <br />
+
+                <b> FORMAT</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.FormatEvent
+                <br />
+                <br />
+
+                <b> LIEU</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.lieux.VilleLieu
+                <br />
+                <br />
+
+                <b> NOMBRE DE PARTICIPANTS</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.NombreParticipant
+                <br />
+                <br />
+
+                <b> DESCRIPTION</b>
+                <br />
+                <img src="~/icons/caret_droite.png" style="height:15px; width:auto; padding-left:30px; padding-right: 5px">
+                @Model.DescriptionEvent
+                <br />
+                <br />
+            </div>
+           
+        </div>
+    </div>
+</div>

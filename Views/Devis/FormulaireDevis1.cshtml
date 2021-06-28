@@ -1,0 +1,108 @@
+﻿@model WebApplication1.ViewModels.DevisViewModels
+@{
+    Layout = "~/Views/Shared/_LayoutDeconnecte.cshtml";
+    ViewBag.Title = "Formulaire Devis 1";
+}
+<div class="text-left">
+
+    
+        <div class="container">
+            <div class="col-10">
+                <h3 class="section-title">Demande de devis</h3>
+                Merci de bien vouloir renseigner vos coordonnées pour toute demande de devis.
+            </div><br />
+            <form action="/Devis/FormulaireDevis2">
+                <div class="form-group row">
+                    <label for="NomSociete" class="col-sm-2 col-form-label">Nom de la Société</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.NomEntreprise,new { @class= "form-control", style= "margin-top: 10px", placeholder = "Nom de la Société" })
+                        @*<input type="text" class="form-control" placeholder="Nom de la Société" style="margin-top: 10px" value="@Model.MainEntreprise.NomEntreprise">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="NumeroSiret" class="col-sm-2 col-form-label">Numéro de Siret</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m=> m.MainEntreprise.Siret, new { @class = "form-control", style = "margin-top: 10px", placeholder = "N° Siret" })
+                        @*<input type="text" class="form-control" placeholder="N° Siret" style="margin-top: 10px" value="@Model.MainEntreprise.Siret">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="AdresseDeLaSociete" class="col-sm-2 col-form-label">Adresse de la Société</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.Adresse.AdresseLieu, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Adresse de la société" })
+                        @*<input type="text" class="form-control" placeholder="Adresse de la Société" style="margin-top: 10px" value="@Model.MainEntreprise.Adresse.AdresseLieu">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="CP" class="col-sm-2 col-form-label">Code Postal</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.Adresse.CPLieu, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Code Postal" })
+                        @*<input type="text" class="form-control" placeholder="Code Postal" style="margin-top: 10px" value="@Model.MainEntreprise.Adresse.CPLieu">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Ville" class="col-sm-2 col-form-label">Ville</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.Adresse.VilleLieu, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Ville" })
+                        @*<input type="text" class="form-control" placeholder="Ville" style="margin-top: 10px" value="@Model.MainEntreprise.Adresse.VilleLieu">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="NomInterlocuteur" class="col-sm-2 col-form-label">Nom de l'Interlocuteur</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.UtilisateurEntreprise.NomUtilisateur, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Nom de l'interlocuteur" })
+                        @*<input type="text" class="form-control" placeholder="Nom de l'interlocuteur" style="margin-top: 10px" value="@Model.MainEntreprise.UtilisateurEntreprise.NomUtilisateur">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="PrenomInterlocuteur" class="col-sm-2 col-form-label">Prénom de l'Interlocuteur</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.UtilisateurEntreprise.PrenomUtilisateur, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Prénom de l'interlocuteur" })
+                        @*<input type="text" class="form-control" placeholder="Prénom de l'interlocuteur" style="margin-top: 10px" value="@Model.MainEntreprise.UtilisateurEntreprise.PrenomUtilisateur">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Fonction" class="col-sm-2 col-form-label">Fonction</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.UtilisateurEntreprise.FonctionUtilisateur, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Fonction dans la société" })
+                        @*<input type="text" class="form-control" placeholder="Fonction" style="margin-top: 10px" value="@Model.MainEntreprise.UtilisateurEntreprise.FonctionUtilisateur">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Telephone" class="col-sm-2 col-form-label">Téléphone</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.UtilisateurEntreprise.TelephoneUtilisateur, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Téléphone" })
+                        @*<input type="tel" class="form-control" placeholder="Téléphone" style="margin-top: 10px" value="@Model.MainEntreprise.UtilisateurEntreprise.TelephoneUtilisateur">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Email" class="col-sm-2 col-form-label">E-mail</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEntreprise.UtilisateurEntreprise.Mail, new { @class = "form-control", style = "margin-top: 10px", placeholder = "E-mail" })
+                        @*<input type="email" class="form-control" placeholder="e-mail" style="margin-top: 10px" value="@Model.MainEntreprise.UtilisateurEntreprise.Mail">*@
+                    </div>
+                </div>
+
+                <div align="right" style="padding-top: 20px">
+                    <button align="right" class="button1" type="submit" id="image" name="submit" value="suivant"><img src="~/icons/fleche_droite_verte_redim.png" value="suivant" alt="Page Suivante" name="submit" /></button>
+
+                    @*<input type="submit" id="image" alt="Page Suivante" src="~/icons/fleche_droite_verte_redim.png" value="suivant"/>*@
+                </div>              
+
+
+            </form>
+
+        </div>
+
+</div>
+
+

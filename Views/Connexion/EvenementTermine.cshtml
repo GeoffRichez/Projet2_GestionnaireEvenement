@@ -1,0 +1,51 @@
+@model WebApplication1.ViewModels.UtilisateurViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.title = "DemandeDevis";
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/connecte.css">
+</head>
+
+<div class="container-fluid titre">
+    <h1></h1>
+</div>
+
+<div class="container">
+    <h2 class="titreEntete infosVide">Mes événements terminés</h2>
+    @if (Model.dvm.MainDevis.Count == 0)
+    {
+        <h3 class="infosVideText">Vous n'avez pas d'événement terminé</h3>
+    }
+    else
+    {
+        <div class="row rowCards infosVide">
+            @foreach (var item in Model.dvm.MainDevis)
+            {
+                if(item.EventDevis.AvancementEvent == WebApplication1.Models.AvancementEvenement.Cloture) { 
+                <div class="col-md-3 col-sm-6">
+                    <div class="card cardConnecte">
+
+                        <img src="~/images/Evenements/Seminaire.jpeg" class="card-img-top imgDevis" alt="..." />
+                        <div class="filtreVert">
+                            <a href="#" class=" btnReveal card-link">Détails</a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>Evénement N° :</strong> @string.Concat("E478", item.Id)</h5>
+                            <div class="card-text">
+                                <div><strong>Date :</strong> @item.EventDevis.DateEvent.ToShortDateString()</div>
+                                <div><strong>Nom de l'évenement :</strong> @item.EventDevis.ThemeEvent </div>
+                                <div><strong>Type d'événement :</strong> @item.EventDevis.TypeEvent </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    }
+
+</div>

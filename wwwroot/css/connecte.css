@@ -1,0 +1,88 @@
+﻿body {
+}
+.titre{
+    margin-top: 20px;
+}
+
+.cardConnecte {
+    width: auto;
+    max-width: 240px;
+    height: auto;
+    margin-bottom:35px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    margin-left:25px;
+    margin-right:25px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
+}
+.filtreVert{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: background 0.4s ease;
+}
+.filtreVert:hover{
+    cursor: pointer;
+    background: rgba(133, 185, 123, 0.5);
+}
+.btnReveal{
+    width: 100px;
+    height: 40px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgba(105, 199, 144) ;
+    text-decoration: none;
+    position: absolute;
+    top:25%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.filtreVert:hover .btnReveal{
+    opacity: 1;
+}
+.imgDevis{
+    width: 100%;
+    height: 50%;
+}
+
+.card-title{
+    text-align:center;
+}
+.titreEntete {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.imgInterl {
+    width: 100%;
+    height: 70%;
+}
+
+.lien devis connecte{
+    color: blueviolet;
+}
+
+.infosVide {
+    margin-bottom: 5%;
+}
+
+.infosVideText {
+    margin-top: 5%;
+}
+
+
+.btn-reglement {
+    color: white;
+    background: rgb(84,155,88);
+    border: 1px solid #123B23;
+    width: 200px;
+    height: auto;
+    margin: 5px;
+}
+

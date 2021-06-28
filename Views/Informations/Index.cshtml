@@ -1,0 +1,86 @@
+﻿@model WebApplication1.ViewModels.UtilisateurViewModel
+@{ Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.Title = "Reglement";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/connecte.css">
+    @*<link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/css/informations.css" rel="stylesheet" />*@
+</head>
+
+<div class="container-fluid titre">
+    <br /><br />
+    <h3>Règlements et factures</h3>
+</div>
+
+<div class="container">
+    <br />
+    @foreach (var item in Model.dvm.MainDevis)
+    {
+       <div class="row rowCards">
+          <div class="col-md-3 col-sm-6">
+              <div class="card cardConnecte itemReglement">
+                  @if (item.EventDevis.TypeEvent == WebApplication1.Models.TypeEvenement.Seminaire)
+                  {
+                      <img src="~/images/Evenements/Seminaire2.jpeg"
+                           class="card-img-top"
+                           alt="..." />
+                  }
+                  else if (item.EventDevis.TypeEvent == WebApplication1.Models.TypeEvenement.TeamBuilding)
+                  {
+                      <img src="~/images/Evenements/TeamBuilding.jpeg"
+                           class="card-img-top"
+                           alt="..." />
+                  }
+                  else if (item.EventDevis.TypeEvent == WebApplication1.Models.TypeEvenement.RoadShow)
+                  {
+                      <img src="~/images/Evenements/Seminaire.jpeg"
+                           class="card-img-top"
+                           alt="..." />
+                  }
+                  else if (item.EventDevis.TypeEvent == WebApplication1.Models.TypeEvenement.Congrès)
+                  {
+                      <img src="~/images/Evenements/congres.jpg"
+                           class="card-img-top"
+                           alt="..." />
+                  }
+                  else if (item.EventDevis.TypeEvent == WebApplication1.Models.TypeEvenement.FamilyDay)
+                  {
+                      <img src="~/images/Evenements/family-day.jpg"
+                           class="card-img-top"
+                           alt="..." />
+                  }
+                  else if (item.EventDevis.TypeEvent == WebApplication1.Models.TypeEvenement.LancementProduit)
+                  {
+                      <img src="~/images/Evenements/new_product.jpg"
+                           class="card-img-top"
+                           alt="..." />
+                  } <!--img780x520-->
+                  <div class="filtreVert">
+                      <div>@Html.ActionLink("Détails", "RecapitulatifEvent", "Devis", new { id = item.Id }, new { @class = " btnReveal card-link", @style = "text-align:center; top: 25%" })</div>
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title">@item.EventDevis.ThemeEvent</h5>
+                      <p class="card-text">
+                          <strong>Date :</strong> @item.EventDevis.DateEvent.ToShortDateString()
+                          <strong>Type d'événement :</strong> @item.EventDevis.FormatEvent
+                      </p>
+                  </div>
+              </div>
+           </div> 
+
+
+            <div class="col-md-3 col-sm-6">
+                <li style="list-style:none">
+                    <ul><a class="btn btn-reglement" href="_blank">Payer les arrhes</a></ul>
+                    <ul><a class="btn btn-reglement" href="_blank">Payer le solde</a></ul>
+                    <ul><a class="btn btn-reglement" href="_blank">Emettre la facture</a></ul>
+                </li>
+            </div>
+        </div>
+    }
+
+</div>
+
+

@@ -1,0 +1,150 @@
+﻿@model WebApplication1.ViewModels.DevisViewModels
+@{
+    Layout = "~/Views/Shared/_LayoutDeconnecte.cshtml";
+    ViewBag.Title = "Formulaire Devis 2";
+}
+<!-- Appel de la Feuille de style minifiée De l'extension Datepicker -->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">-->
+<!-- Appel de la Feuille de style minifiée De La librairie Bootstrap-->
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+<div class="text-left">
+    @using (Html.BeginForm()) {
+        <div class="container">
+            <div class="col-10">
+                <h3 class="section-title">Demande de devis</h3>
+                Merci de bien vouloir renseigner les champs ci-dessous.
+            </div><br />
+            <form method="post">
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="TypeEvent" class="col-form-label">Type d'événement</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="program" id="program" required>
+                            <option readonly>Quel événement souhaitez-vous organiser ?</option>
+                            <option>Séminaire</option>
+                            <option>Congrès</option>
+                            <option>Team Building</option>
+                            <option>Salon</option>
+                            <option>Family Day</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="Theme" class="col-form-label">Thème de l'événement</label>
+                    </div>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEvenement.ThemeEvent, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Thème" })
+                        @*<input type="text" class="form-control" placeholder="Thème" style="margin-top: 10px">*@
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="FormatEvent" class="col-form-label">Format de l'événement</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="program" id="program" required>
+                            <option readonly>Choisissez le format qui vous convient :</option>
+                            <option>Présentiel</option>
+                            <option>Phygital</option>
+                            <option>Digital</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="LieuEvent" class="col-form-label" style="vertical-align:middle">Lieu de l'événement</label>
+                    </div>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEvenement.LieuEvent.VilleLieu, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Ville" })
+                        @Html.TextBoxFor(m => m.MainEvenement.LieuEvent.CPLieu, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Code Postal" })
+                        @*<input type="text" class="form-control" placeholder="Ville" style="margin-top: 10px">
+                            <input type="text" class="form-control" placeholder="Code Postal" style="margin-top: 10px">*@
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="DateEvent" class="col-form-label">Date de l'événement</label>
+                    </div>
+                    <div class="col-sm-10">
+                            @Html.TextBoxFor(m => m.MainEvenement.DateEvent, new { @type = "date", @class = "form-control", style = "margin-top: 10px", placeholder = "Choisir une date" })
+                            @*<input type="date" placeholder="Choisir une date" class="form-control" id="reservationDate">*@
+                            @*<div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-calendar"></i></span></div>*@
+                       
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="DureeEvent" class="col-form-label">Durée de l'événement</label>
+                    </div>
+                    <div class="col-sm-10">                       
+                            @Html.TextBoxFor(m => m.MainEvenement.DureeEvent, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Durée de l'événement (nombre de jours)" })
+                            @*<input type="text" class="form-control" placeholder="Durée de l'événement">*@                   
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="NombreParticipants" class="col-form-label">Nombre de participants prévu</label>                
+                    </div>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.MainEvenement.ParticipantEvent, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Nombre de participants" })
+                        @*<input type="text" class="form-control" placeholder="Nombre de participants">*@
+                          Attention : pour tout événement réunissant plus de 100 personnes, un service de sécurité et une assurance complémentaires fournis par nos soins sont obligatoires.
+                        <br /><br />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="PrestationType" class="col-form-label">Prestations souhaitées</label>
+                    </div>
+                    <div class="col-sm-10">                      
+                        @foreach (var item in Model.MainPrestation)
+                        {
+                            <label class="checkbox-inline">
+                                <input type="checkbox" style="margin:10px" id="@item.NomPrestation" name="PrestaType" value="@item.NomPrestation" />                          
+                                <span title="@item.Description">
+                                    <label for="@item.NomPrestation">@item.NomPrestation</label>
+                                </span>                     
+                            </label>
+                        }
+                       
+
+
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="Description" class="col-form-label">Description de l'événement</label>
+                    </div>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(m => m.MainEvenement.Description, new { @class = "form-control", style = "margin-top: 10px", placeholder = "Détaillez vos besoins" })
+                        @*<textarea type="text" class="form-control" placeholder="Description"></textarea>*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <div style="padding-top: 20px">
+                            <button class="button1" align="left" type="submit" id="image" name="submit" alt="Page Précédente" value="precedent"><img src="~/icons/fleche_gauche_verte.png" /></button>
+                            <input class="button2" type="submit" name="submit" alt="Page Suivante" value="suivant" style="position:relative ; float:right" />
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+
+        </div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Extension DATEPICKER -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<!-- Noyau JavaScript de Bootstrap -->
+<script src="~/js/script.js"></script>

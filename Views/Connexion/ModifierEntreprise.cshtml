@@ -1,0 +1,124 @@
+﻿@model WebApplication1.Models.Entreprise
+@{
+    Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.Title = "Mes informations";
+
+}
+
+
+<head>
+    <link href="~/css/informations.css" rel="stylesheet" />
+    @*  <link href="~/css/main.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/connecte.css" />*@
+</head>
+
+<div class="text-left">
+
+
+    <div class="container">
+        <!--<div class="col-10">        
+        </div>-->
+         <div class="col-10">
+             <h3 class="section-title">Coordonnées de la société</h3>
+            </div><br />   
+
+        @using (Html.BeginForm("ModifierEntreprise", "Connexion", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.UtilisateurEntreprise.Id)
+
+             <div class="form-group row">
+                    <label for="NomSociete" class="col-sm-2 col-form-label">Nom de la société</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => Model.NomEntreprise, new { @class = "form-control", style = "margin-top: 10px", @readonly = "readonly" })
+                    </div>
+             </div>
+
+             <div class="form-group row">
+                    <label for="NumeroSiret" class="col-sm-2 col-form-label">Numéro de Siret</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => Model.Siret, new { @class = "form-control", style = "margin-top: 10px", @readonly = "readonly" })
+                    </div>
+             </div>
+             <div class="form-group row">
+                 <label for="AdresseLieu" class="col-sm-2 col-form-label">Adresse</label>
+                 <div class="col-sm-10">
+                     @Html.TextBoxFor(m => Model.Adresse.AdresseLieu, new { @class = "form-control", style = "margin-top: 10px", @readonly = "readonly" })
+                 </div>
+             </div>
+
+             <div class="form-group row">
+                 <label for="AdresseCP" class="col-sm-2 col-form-label">Code postal</label>
+                 <div class="col-sm-10">
+                     @Html.TextBoxFor(m => Model.Adresse.CPLieu, new { @class = "form-control", style = "margin-top: 10px", @readonly = "readonly" })
+                 </div>
+             </div>
+
+             <div class="form-group row">
+                 <label for="AdresseVille" class="col-sm-2 col-form-label">Ville</label>
+                 <div class="col-sm-10">
+                     @Html.TextBoxFor(m => Model.Adresse.VilleLieu, new { @class = "form-control", style = "margin-top: 10px", @readonly = "readonly" })
+                 </div>
+             </div>
+            <br /><br />
+
+            <div class="col-10">
+                <h3 class="section-title">Informations de l'interlocuteur</h3>
+                Vous pouvez mettre ces informations à jour si vous le souhaitez.
+            </div>          
+
+            <div class="form-group row">
+                <label for="nomUser" class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => Model.UtilisateurEntreprise.NomUtilisateur, new { @class = "form-control", style = "margin-top: 10px" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="prenomUser" class="col-sm-2 col-form-label">Prénom</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => Model.UtilisateurEntreprise.PrenomUtilisateur, new { @class = "form-control", style = "margin-top: 10px" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="FonctionUser" class="col-sm-2 col-form-label">Fonction</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => Model.UtilisateurEntreprise.FonctionUtilisateur, new { @class = "form-control", style = "margin-top: 10px" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="TelUser" class="col-sm-2 col-form-label">Téléphone</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => Model.UtilisateurEntreprise.TelephoneUtilisateur, new { @class = "form-control", style = "margin-top: 10px" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="melUser" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => Model.UtilisateurEntreprise.Mail, new { @class = "form-control", style = "margin-top: 10px" })
+                </div>
+            </div>
+
+                <div align="right" style="padding-top: 20px">
+                        <a class="button" href="#popup1">Modifier</a>                   
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+                            <h6 style="text-align:center; color:black";> Etes-vous sûr de vouloir modifier ces informations ? </h6>
+                            <br /><br />
+                            <a class="close" href="#">&times;</a>
+                            <div class="content" style="text-align:center">
+                                <input type="submit" value="Valider" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+         }   
+
+    </div>
+
+</div>
+
+

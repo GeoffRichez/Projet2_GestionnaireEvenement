@@ -1,0 +1,49 @@
+@model WebApplication1.ViewModels.UtilisateurViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.title = "DemandeDevis";
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/connecte.css">
+</head>
+
+<div class="container-fluid titre">
+    <h1></h1>
+</div>
+
+<div class="container">
+    <h2 class="titreEntete infosVide">Mes demande de devis</h2>
+    @if (Model.dvm.MainDevis.Count == 0)
+    {
+        <h3 class="infosVideText">Vous n'avez pas de demande de devis en attente de réponse de la part de MEGA</h3>
+    }
+    else
+    {
+        <div class="row rowCards infosVide">
+            @foreach (var item in Model.dvm.MainDevis)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="card cardConnecte">
+
+                        <img src="~/images/Evenements/DEVIS.png" class="card-img-top imgDevis" alt="..." />
+                        <div class="filtreVert">
+                            <div>@Html.ActionLink("Détails", "RecapitulatifDevis", "Devis", new { id = item.Id }, new { @class = " btnReveal card-link", @style = "text-align:center; top: 25%" })</div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>Devis N° :</strong> @string.Concat("D478", item.Id)</h5>
+                            <div class="card-text">
+                                <div><strong>Date  </strong> @item.DateEmissionDevis.ToShortDateString()</div>
+                                <div><strong>Nom de l'événement :</strong> @item.EventDevis.ThemeEvent</div>
+                                <div><strong>Tpe d'événement :</strong>  @item.EventDevis.TypeEvent</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+</div>

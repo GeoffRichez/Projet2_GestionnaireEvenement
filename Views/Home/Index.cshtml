@@ -1,0 +1,681 @@
+﻿@model WebApplication1.ViewModels.AccueilViewModels
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Conference</title>
+
+    <!-- css -->
+    <link href="~/bootstrap/boostsrap.css" rel="stylesheet" />
+    <link href="~/ionicons/ionicons.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body data-spy="scroll" data-target="#site-nav">
+    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- logo -->
+                <div class="site-branding">
+                    <a class="logo" href="index.html">
+                        <!-- logo image  -->
+                        <img src="~/images/Logo.png" alt="Logo">
+                    </a>
+                </div>
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div><!-- /.navbar-header -->
+
+            <div class="collapse navbar-collapse" id="navbar-items">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <!-- navigation menu -->
+                    <li><a data-scroll href="#about">Qui sommes-nous ?</a></li>
+                    <li><a data-scroll href="#prestation">Prestations</a></li>
+                    <li><a data-scroll href="#photos">Références</a></li>
+                    <li><a data-scroll href="#partner">Partenaires</a></li>
+                    <li>@Html.ActionLink("Connexion", "Index", "Connexion")</li>
+                    @if (!Context.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Devis en ligne", "FormulaireDevis1", "Devis", new { @class = "devis", style = "border-color: rgb(255, 255, 255); border: 1px solid;" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Devis en ligne", "FormulaireDevis2Connecte", "Devis", new { @class = "devis", style = "border-color: rgb(255, 255, 255); border: 1px solid;" })</li>
+
+                    }
+
+                    @*<li class="devis"><a data-scroll href="#photos">@Html.ActionLink("Devis en ligne", "FormulaireDevis1", "Devis")</a></li>*@
+
+                </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav>
+
+    <header id="site-header" class="site-header valign-center">
+        <div class="intro">
+
+            <h1>ORGANISER VOS EVENEMENTS AVEC MEGA</h1><br>
+
+            <p>MAKE EVENT GREEN AGAIN</p><br>
+
+            <div class=" btn btn-white" />
+            @if (!Context.User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Devis en ligne", "FormulaireDevis1", "Devis")
+            }
+            else
+            {
+                @Html.ActionLink("Devis en ligne", "FormulaireDevis2Connecte", "Devis")
+
+            }
+
+
+        </div>
+    </header>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h3 class="section-title">Qui sommes-nous ?</h3>
+
+                    <p>
+                        Basés à Malakoff, nous sommes une agence événementielle familiale et écologique depuis plus de 20 ans.
+                        Nous concevons et mettons en place des événements en leur assurant une logistique sans faille,
+                        de l’accueil des invités à la fin de la prestation, en passant par l’animation, la restauration, le transport…
+                        L’organisation de vos événements d'entreprise est pensée sur-mesure et 100% verte !
+                    </p>
+                    <figure>
+                        <img alt="" class="img-responsive" src="~/images/about-us.jpg">
+                    </figure>
+                </div><!-- /.col-sm-6 -->
+
+                <div class="col-sm-6">
+
+                    <h3 class="section-title multiple-title">Notre charte environnementale</h3>
+                    <p>
+                        Depuis toujours, notre agence veille particulièrement au respect des gens et de notre planète.
+                        Cela passe par la mise en place de notre charte verte, la Mega Green Chart, qui existe depuis 17 ans déjà.
+                        <br />Grâce aux 10 points essentiels qui y sont détaillés, nous améliorons le monde pour nos enfants !
+                    </p>
+                    <br>
+                    <strong>La Mega Green Chart, c'est...</strong>
+                    <ul class="list-arrow-right">
+                        <li>
+                            Pour chaque personne participant à un de nos événements, un arbre planté. Nous envoyons par email un certificat précisant
+                            le type d'arbre planté et sa localisation à chaque personne le désirant.
+                        </li>
+                        <li>Une empreinte carbone 100% compensée, ce quel que soit l'événement que nous organisons et le nombre de participants prévus.</li>
+                        <li>Des partenaires éco-responsables : nous exigeons de nos prestataires qu'ils respectent et appliquent eux-mêmes les principes décrits dans notre charte.</li>
+                        <li>Une restauration au sein de notre entreprise et lors des événements organisés biologique à 93%</li>
+                    </ul>
+                    <strong>Découvrez l'intégralité de notre charte verte !</strong>
+
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+
+    <section id="facts" class="section bg-image-1 facts text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <i class="ion-ios-calendar"></i>
+                    <h3 class="counter">578</h3>
+                    <h3>Evénements organisés</h3>
+
+                </div>
+                <div class="col-md-3">
+
+                    <i class="ion-ios-location"></i>
+                    <h3 class="counter">107</h3>
+                    <h3>Lieux référencés</h3>
+
+                </div>
+                <div class="col-md-3">
+
+                    <i class="ion-pricetags"></i>
+                    <h3 class="counter">1654</h3>
+                    <h3>Arbres plantés</h3>
+
+                </div>
+                <div class="col-md-3">
+
+                    <i class="ion-speakerphone"></i>
+                    <h3 class="counter">42</h3>
+                    <h3>Intervenants</h3>
+
+                </div>
+            </div><!-- row -->
+        </div><!-- container -->
+    </section>
+
+    <section id="speakers" class="section speakers">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h3 class="section-title">L'équipe MEGA</h3>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block" src="/images/interlocuteurs/Youssef.jpg">
+                        </figure>
+                        <h4>Youssef El Mejjad</h4>
+
+                        <p>Directeur</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block" src="/images/interlocuteurs/Emeline.jpg">
+                        </figure>
+
+                        <h4>Emeline Peyrot</h4>
+
+                        <p>Chef de groupe</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-3">
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block" src="/images/interlocuteurs/Etienne.jpeg">
+                        </figure>
+
+                        <h4>Etienne Rakoto</h4>
+
+                        <p>Directeur de clientèle</p>
+
+                        <ul class="social-block" style="height:100px; width:auto">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-3">
+
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block" src="/images/interlocuteurs/Geoffroy.jpg">
+                        </figure>
+
+                        <h4>Geoffroy Richez</h4>
+
+                        <p>Coordinateur</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div>
+    </section>
+
+    <section id="contribution" class="section bg-image-2 contribution">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mt0 font-400">« La raison d’être d’une organisation est de permettre à des gens ordinaires de faire des choses extraordinaires »</h4>
+
+                    <br>
+
+                    <div class=" btn btn-white" />
+                    @if (!Context.User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Devis en ligne", "FormulaireDevis1", "Devis")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Devis en ligne", "FormulaireDevis2Connecte", "Devis")
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prestation" class="section prestation">
+        <div class="container">
+            <div class="row">
+                <h3 class="section-title">Nos Prestations</h3>
+                <div class="col-sm-6">
+                    Nous sommes là pour vous permettre d'organiser vos événement en toute quiétude, quels qu'il soient.
+                    Family ("Green") Day, Team Building, colloques, séminaires, soirées à thème, lancement de produits...
+                    <br> <br> Qu’il s’agisse d’un évènement interne ou externe à destination de vos invités, MEGA saura valoriser votre communication et renforcer votre business en organisant un évènement à votre image,
+                    qui marquera les esprits.
+                    Le respect de notre charte verte tout en long de l'organisation et du déroulé le jour J illustrera et renforcera votre responsabilité écologiques.
+                    <br> <br>  De la définition de la thématique centrale à la stratégie de communication, en passant par la sélection du lieu (atypique, insolite ou classique, en France ou à l’étranger),
+                    ou le choix des prestataires, l’équipe prend en charge l’intégralité de vos évènements corporate tant sur le fond que sur la forme.
+                    Le point de départ c’est vous, votre entreprise et vos enjeux.
+                    <br> <br>
+                    <figure>
+                        <img alt="" class="img-responsive" src="~/images/exemple-2.jpg">
+                    </figure>
+                </div>
+
+                <div class="col-sm-6">
+                    <figure>
+                        <img alt="" class="img-responsive" src="~/images/exemple-1.jpg">
+                    </figure>
+                    <br>  <br>
+                    Par ailleurs, nous avons souhaité vous proposer des solutions pour continuer à organiser vos événements malgré les contraintes actuelles.
+                    <ul class="list-arrow-right">
+                        <li>
+                            <b>Formule 100% digital, pour une protection optimale :</b> les participants à vos événements peuvent profiter de l'occasion en toute tranquilité.
+                            De nombreux outils sont à votre disposition : retransmission audio-visuelle, création d'espaces digitaux évolutifs, participation via de la réalité virtuelle,
+                            partage de repas entre collaborateurs via une livraison à domicile...
+                        </li>
+                        <li>
+                            <b>Formule phygitale :</b> mixez idéalement, selon vos envies, un événement physique et un événement digital pour une expérience parfaite.
+                            Accueillez certains participants sur place, d'autres depuis leur domicile grâce à une retransmission simultanée, élargissez votre cercle géographique au monde entier, battez des records d'audience !
+                        </li>
+                    </ul>
+
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+
+    <section id="contribution" class="section bg-image-3 contribution">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mt0 font-400">ET BIEN D'AUTRES SERVICES ENCORE...</h4>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="photos" class="section partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Ils nous ont fait confiance</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-1"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-2"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-3"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-4"></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-5"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-6"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-7"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-8"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section id="partner" class="section photos">
+        <div class="container" style="margin-top: 15px">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Nos partenaires</h3>
+                </div>
+            </div>
+        </div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/images/carousel/clos.png" alt="Los Angeles" class="w-100 persoCarousel">
+                    <div class="carousel-caption">
+                        <h3>Clos de la Ribaudière</h3>
+                        <p>L'endroit idéal pour vos séminaires</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/carousel/traiteur.png" alt="Chicago" class="w-100 persoCarousel">
+                    <div class="carousel-caption">
+                        <h3>ArtFood</h3>
+                        <p>Le traiteur de tous vos événements</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/carousel/danseuse.jpg" alt="New York" class="w-100 persoCarousel">
+                    <div class="carousel-caption">
+                        <h3>Héléna, danseuse professionnelle</h3>
+                        <p>Une animation toute en poésie et en douceur</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/carousel/greenlantern.jpg" alt="Houston" class="w-100 persoCarousel">
+                    <div class="carousel-caption">
+                        <h3>The green lantern</h3>
+                        <p>Une équipe de comédiens à votre service</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/carousel/atelier.png" alt="Houston" class="w-100 persoCarousel">
+                    <div class="carousel-caption">
+                        <h3>Chez Michel</h3>
+                        <p>Animations vertes écoresponsables</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/carousel/son.jpg" alt="Dallas" class="w-100 persoCarousel">
+                    <div class="carousel-caption">
+                        <h3>IBS sons et lumières</h3>
+                        <p>Décoration lumineuse et retransmissions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="registration" class="section registration">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">PRISE DE CONTACT</h3>
+                </div>
+            </div>
+
+            <form action="#" id="registration-form">
+                <div class="row">
+                    <div class="col-md-12" id="registration-msg" style="display:none;">
+                        <div class="alert"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Prénom" id="prenom" name="prenom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nom de famille" id="nom" name="nom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ville" id="ville" name="ville" required>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="Profil" id="profil" required>
+                                <option readonly>Profil</option>
+                                <option>Particulier</option>
+                                <option>Entreprise</option>
+                                <option>Prestataire</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="program" id="program" required>
+                                <option readonly>Pourquoi souhaitez-vous nous contacter ?</option>
+                                <option>Pour obtenir des informations</option>
+                                <option>Pour rejoindre nos équipes</option>
+                                <option>Pour proposer vos services</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <form>
+                            <textarea type="description" class="form-control-textarea" placeholder="Description" id="email" name="email" required style="border-radius: 5px"></textarea>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center mt20">
+                    <button type="submit" class="btn btn-black" id="registration-submit-btn">Valider</button>
+                </div>
+
+
+            </form>
+        </div>
+    </section>
+    <section id="faq" class="section faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">FAQ</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Comment organiser un événement physique dans ce contexte de crise sanitaire ?</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    MEGA et ses équipes prennent toutes les précautions indispensables pour que vos événements se passent en toute sécurité : port du masque obligatoire,
+                                    gel désinfectant à disposition, distanciation renforcée, mise en place de portique de prise température à l'entrée, tests antigéniques à disposition,
+                                    jauge limitée à un tiers de la normale, services de restauration adaptés, nettoyage renforcé et équipes supplémentaires spéciales Covid...
+                                    Par ailleurs, n'hésitez pas à nous solliciter pour des événements digitaux.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Pourquoi travailler avec MEGA ?</a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    Si vous cherchez un service sur-mesure et écologique en prime, vous êtes au bon endroit !
+                                    Avec plus de 550 événements organisés depuis notre création, notre expérience vous permettra d'organiser vos événements et d'en profiter en toute sérénité, sans mauvaise surprise.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Vous êtes vraiment verts à 100% ?</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Littéralement non, heureusement !
+                                    <br />Mais l'écologie et l'avenir de notre planète sont au centre de nos préoccupations, avec le bien-être de nos clients.
+                                    C'est pour cela que : 1 invité = 1 arbre planté !
+                                    <br /> Notre MEGA Green Chart vous garantit que nous mettons tout en oeuvre pour un événement le plus vert possible.
+                                    <ol>
+                                        <li> Tous nos prestataires doivent être écoresponsables </li>
+                                        <li> Nous compensons l’empreinte carbone liée à toutes nos activités </li>
+                                        <li> Tout notre approvisionnement est durable (énergie, matériaux, nourriture…) </li>
+                                        <li> Nous privilégions les circuits courts lors de l’élaboration et de la mise en place de nos événements </li>
+                                        <li> Lorsque c’est possible, nous réutilisons nos décors, stands...  </li>
+                                        <li> A minima 96% de nos déchets sont recyclés </li>
+                                        <li> Pour chaque personne participant à un de nos événements, nous plantons un arbre et faisons parvenir son certificat à tout invité qui le souhaite </li>
+                                        <li> La restauration au sein de notre entreprise et lors des événements organisés est biologique à 93% et provenant de filières équitables </li>
+                                        <li> Chaque année, la marge nette réalisée au-delà de notre objectif initial fixé au 1er janvier est reversée à reforestAction  </li>
+                                        <li> Nous sommes certifiés ISO 20121 depuis 2012 </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> Comment devenir partenaire MEGA ?</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">C'est facile : remplissez notre formulaire de contact ci-dessus ! N'hésitez pas à détailler en quoi votre démarche est compatibles avec nos engagements écologiques.</div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> Comment modifier ma demande de devis ?</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    Si vous avez créé votre espace personnel, rien de plus simple : il vous suffit de mettre à jour les informations remplies et de valider votre demande.
+                                    <br /> Si vous n'avez pas créé votre espace personnel, contactez-nous via notre formulaire en indiquant les informations que vous souhaitez modifier
+                                    et la personne en charge de votre dossier vous contactera au plus vite.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingSix">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix"> Comment modifier mon événement une fois le devis validé ?</a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    Rendez-vous sur votre espace personnel en vous connectant. Votre événement est entièrement modifiable dans le respect des règles indiquées dans nos conditions générales : il suffit de le sélectionner et de cliquer sur le bouton modifier.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="location" class="section location">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3 class="section-title">Où nous trouver</h3>
+                    <address>
+                        <p>Pantin 93500 <br> 68 Avenue Jean Jaurès <br> Téléphone : +33 (0) 6 87 47 51<br> E-mail : contact@mega.fr</p>
+                    </address>
+                </div>
+                <div class="col-sm-9">
+                    <iframe src="https://maps.google.com/maps?q=Mega%2068%20avenue%20jean%20jaures%20pantin&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        CONCU ET PRODUIT PAR <br> MAKE EVENT GREEN AGAIN <br> ©2021 <br>
+                        <a class="lienFormulaire" style="color:white" href="/Utilisateur/ModifierUtilisateur">Mentions légales - CGV</a>
+                    </p>
+
+                    <ul class="social-block">
+                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- script -->
+
+    <script src="~/lib/jquery.js"></script>
+    <script src="~/lib/bootstrap.js"></script>
+    <script src="~/lib/smooth-scroll.js"></script>
+    <script src="~/lib/main.js"></script>
+
+</body>

@@ -1,0 +1,20 @@
+﻿@model WebApplication1.ViewModels.UtilisateurViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutPF.cshtml";
+    ViewBag.Title = "Formulaire Devis 3 Connecte";
+}
+
+<div class="text-left" style="text-align:center">
+    <h3>Merci pour votre nouvelle demande de devis.</h3> <br />
+    <div class="texte devis3">
+        Nous allons traiter votre demande au plus vite, vous recevrez une réponse de notre part sous 3 jours ouvrés. <br />
+        <br />
+        En attendant, n'hésitez pas à consulter le récapitulatif de vos devis dans votre espace.<br/>
+        <br />
+        <div>
+            @Html.ActionLink("Consulter mes devis en cours", "DemandeDevis", "Connexion", null, new { @style = "color:white; text-decoration: underline;" })
+        </div>
+        <br />
+        Vous pouvez également nous contacter pour toute demande urgente.<br />
+    </div>
+</div>
